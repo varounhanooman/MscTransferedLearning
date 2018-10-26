@@ -19,3 +19,19 @@ one line plot represents the hidden state in a random walk
 second line plot represents the observed/measured state with noise ontop of it
 
 The next step is to apply the Kalman Filter to the mesaured line plot and observe if the line stays within the credible region
+
+The Data step is given by
+
+![Data Step|f(z_{i}|x_{i}) = N(\mu_{i},D_{i})](https://latex.codecogs.com/gif.latex?f%28z_%7Bi%7D%7Cx_%7Bi%7D%29%20%3D%20N%28%5Cmu_%7Bi%7D%2CD_%7Bi%7D%29)
+
+The parameters are obtained using:
+
+place here
+
+The One Step ahead predictor is given by
+
+![One Step Ahead|f(z_{i+1}|x_{i}) = N(m_{i+1},T_{i+1})](https://latex.codecogs.com/gif.latex?f%28z_%7Bi&plus;1%7D%7Cx_%7Bi%7D%29%20%3D%20N%28m_%7Bi&plus;1%7D%2CT_%7Bi&plus;1%7D%29)
+
+The paramters are updated using:
+
+place here
