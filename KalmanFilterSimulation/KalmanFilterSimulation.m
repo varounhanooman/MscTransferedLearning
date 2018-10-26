@@ -9,12 +9,14 @@ D = zeros(num_time_step, 1) ;   %initialize vector D
 K = zeros(num_time_step, 1) ;   %initialize vector K
 success = zeros(num_time_step, 1) ;   %initialize vector successful estimate region
 z(1) = 1;                       %z_i at time i=1 equal zero
-m(1) = z(1);                    %assume m_1 is given
-T(1) = 0.1;                    %assume T_1 is given
+m(1) = 0;                    %assume m_1 is given
+T(1) = 5;                    %assume T_1 is given
 A = 0.9;                        %super critical scaling parameter chosen value = 0.9 such that A decays to 0 stably
 H = 1.3;                        %non-critical scaling of the observed/mesaured hidden value
 sig_rand = 0.01;                             %sigma value to be used for sigma x (none hard coded since used in multiple places)
+sig_rand_hidden = 1;                         %sigma value to be used for sigma z (none hard coded since used in multiple places)
 sigma_x = normrnd(0, sig_rand);             %choose sigma_x from a normal distribution of mean zero and with variance of sig_rand
+sigma_z = normrnd(0, sig_rand_hidden);      
 x(1) = normrnd(H*z(1), abs(sigma_x));       %perform observation model on hidden value
 %-------computue m_2 and T_2------
 K(1) = T(1)*transpose(H)*inv(H*T(1)*transpose(H)+sigma_x);
@@ -24,7 +26,7 @@ m(2) = A*Mu(1);
 T(2) = A*D(1)*transpose(A)+sigma_z;
 %---------------------------------
 for i=2:num_time_step                     %Do this num_time_step times
-    sigma_z = normrnd(0,1);                 %choose new sigma_z from a normal distribution of mean zero and with variance 1
+    sigma_z = normrnd(0,sig_rand_hidden);                 %choose new sigma_z from a normal distribution of mean zero and with variance 1
     z(i) = normrnd(A*z(i-1), abs(sigma_z)); %perform state evolution on hidden value (equation 4)
     sigma_x = normrnd(0,sig_rand);          %choose new sigma_x from a normal distribution of mean zero and with variance sig_rand
     x(i) = normrnd(H*z(i), abs(sigma_x));%observe hidden value using observational model (equation 3)
