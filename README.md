@@ -26,7 +26,9 @@ The Data step is given by
 
 The parameters are obtained using:
 
-place here
+![get mu|\mu_i = m_i + K_i(x_i - Hm_i)](https://latex.codecogs.com/gif.latex?%5Cmu_i%20%3D%20m_i%20&plus;%20K_i%28x_i%20-%20Hm_i%29)
+![get D|D_i = (I - K_iH)T_i](https://latex.codecogs.com/gif.latex?D_i%20%3D%20%28I%20-%20K_iH%29T_i)
+![get K|K_i = T_iH^T(HT_iH^T+\Sigma_x)^{-1}](https://latex.codecogs.com/gif.latex?K_i%20%3D%20T_iH%5ET%28HT_iH%5ET&plus;%5CSigma_x%29%5E%7B-1%7D)
 
 The One Step ahead predictor is given by
 
