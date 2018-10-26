@@ -30,7 +30,7 @@ for i=2:num_time_step                     %Do this num_time_step times
     x(i) = normrnd(H*z(i), abs(sigma_x));%observe hidden value using observational model (equation 3)
     %compute estimation of real value
     K(i) = T(i)*transpose(H)*inv(H*T(i)*transpose(H)+sigma_x);
-    Mu(i) = m(i) + K(i)*(x(i)-H*m(i));
+    Mu(i) = m(i) + K(i)*(z(i)-H*m(i));
     D(i)=(eye(1)-K(i)*H)*T(i);
     %compute m_i+1 and T_i+1
     if i<num_time_step             %don't computer after total number of time steps
