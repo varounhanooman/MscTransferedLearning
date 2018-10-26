@@ -19,3 +19,26 @@ one line plot represents the hidden state in a random walk
 second line plot represents the observed/measured state with noise ontop of it
 
 The next step is to apply the Kalman Filter to the mesaured line plot and observe if the line stays within the credible region
+
+The Data step (Folly & Quinn, Equation 5) is given by
+
+![Data Step|f(z_{i}|x_{i}) = N(\mu_{i},D_{i})](https://latex.codecogs.com/gif.latex?f%28z_%7Bi%7D%7Cx_%7Bi%7D%29%20%3D%20N%28%5Cmu_%7Bi%7D%2CD_%7Bi%7D%29)
+
+The parameters are obtained using:
+
+![get mu|\mu_i = m_i + K_i(x_i - Hm_i)](https://latex.codecogs.com/gif.latex?%5Cmu_i%20%3D%20m_i%20&plus;%20K_i%28x_i%20-%20Hm_i%29)
+
+![get D|D_i = (I - K_iH)T_i](https://latex.codecogs.com/gif.latex?D_i%20%3D%20%28I%20-%20K_iH%29T_i)
+
+![get K|K_i = T_iH^T(HT_iH^T+\Sigma_x)^{-1}](https://latex.codecogs.com/gif.latex?K_i%20%3D%20T_iH%5ET%28HT_iH%5ET&plus;%5CSigma_x%29%5E%7B-1%7D)
+
+The One Step ahead predictor (Folly & Quinn, Equation 6) is given by
+
+![One Step Ahead|f(z_{i+1}|x_{i}) = N(m_{i+1},T_{i+1})](https://latex.codecogs.com/gif.latex?f%28z_%7Bi&plus;1%7D%7Cx_%7Bi%7D%29%20%3D%20N%28m_%7Bi&plus;1%7D%2CT_%7Bi&plus;1%7D%29)
+
+
+The paramters are updated using:
+
+![Mu i+1 param|m_{i+1}=A\mu_i](https://latex.codecogs.com/gif.latex?m_%7Bi&plus;1%7D%3DA%5Cmu_i)
+
+![T i+1 param|T_{i+1}=AD_iA^T+\Sigma_z](https://latex.codecogs.com/gif.latex?T_%7Bi&plus;1%7D%3DAD_iA%5ET&plus;%5CSigma_z)
